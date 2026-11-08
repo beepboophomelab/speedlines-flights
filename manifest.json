@@ -36,7 +36,7 @@
   "template": "https://api.adsbdb.com/v0/callsign/{callsign}"
  },
  "report": {
-  "url": "https://report.speedlines.uk/v1/report",
+  "url": "https://flights-api.speedlines.uk/v1/report",
   "enabled": false
  },
  "firmware": {},
@@ -63,6 +63,6 @@
   "bytes": 49673
  },
  "key_url": "https://flights.speedlines.uk/keys/",
- "version": "2026.11.08.1527-b07dda74",
- "published": "2026-11-08T17:34:22"
+ "version": "2026.11.08.1527-89926251",
+ "published": "2026-11-08T19:47:30"
 }
