@@ -1,0 +1,68 @@
+{
+ "schema": 1,
+ "sources": [
+  {
+   "name": "flyitaly",
+   "format": "adsbx_v2",
+   "needs_key": true,
+   "template": "https://api.flyitalyadsb.com/api/aircraft/v2/lat/{lat}/lon/{lon}/dist/{nm}/"
+  },
+  {
+   "name": "adsbfi",
+   "format": "readsb",
+   "needs_key": false,
+   "template": "https://opendata.adsb.fi/api/v3/lat/{lat}/lon/{lon}/dist/{nm}"
+  },
+  {
+   "name": "adsblol",
+   "format": "readsb",
+   "needs_key": false,
+   "template": "https://api.adsb.lol/v2/lat/{lat}/lon/{lon}/dist/{nm}"
+  }
+ ],
+ "source_order": {
+  "gift": [
+   "flyitaly",
+   "adsbfi",
+   "adsblol"
+  ],
+  "own": [
+   "adsbfi",
+   "flyitaly",
+   "adsblol"
+  ]
+ },
+ "routes": {
+  "template": "https://api.adsbdb.com/v0/callsign/{callsign}"
+ },
+ "report": {
+  "url": "https://report.speedlines.uk/v1/report",
+  "enabled": false
+ },
+ "firmware": {},
+ "intervals": {
+  "poll_s": 15,
+  "manifest_h": 24
+ },
+ "keys": {
+  "list": [
+   "list_signing_v1",
+   "list_signing_v2"
+  ],
+  "firmware": [
+   "firmware_signing_v1",
+   "firmware_signing_v2"
+  ]
+ },
+ "moved_to": null,
+ "list": {
+  "url": "https://flights.speedlines.uk/list.json",
+  "sig": "https://flights.speedlines.uk/list.json.sig",
+  "version": "2026.11.08.1527",
+  "sha256": "37f38f487f2a7775ce804508b24f81418c852a2f69210c0b576cf3d90ce56679",
+  "bytes": 49673
+ },
+ "key_url": "https://flights.speedlines.uk/keys/",
+ "version": "2026.11.08.1527-b07dda74",
+ "published": "2026-11-08T17:34:22"
+}
