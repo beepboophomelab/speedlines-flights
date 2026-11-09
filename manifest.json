@@ -41,7 +41,10 @@
  },
  "firmware": {},
  "intervals": {
-  "poll_s": 15,
+  "normal_s": 30,
+  "close_s": 15,
+  "quiet_s": 120,
+  "close_nm": 5,
   "manifest_h": 24
  },
  "keys": {
@@ -58,11 +61,11 @@
  "list": {
   "url": "https://flights.speedlines.uk/list.json",
   "sig": "https://flights.speedlines.uk/list.json.sig",
-  "version": "2026.11.08.1527",
-  "sha256": "37f38f487f2a7775ce804508b24f81418c852a2f69210c0b576cf3d90ce56679",
-  "bytes": 49673
+  "version": "2026.11.09.0500",
+  "sha256": "0da5e037145a7d97deb49f8c0f16d97a3ee52a271d2b27a8eda427edc8d39d36",
+  "bytes": 49917
  },
  "key_url": "https://flights.speedlines.uk/keys/",
- "version": "2026.11.08.1527-89926251",
- "published": "2026-11-08T19:47:30"
+ "version": "2026.11.09.0500-343cddc4",
+ "published": "2026-11-09T18:55:35"
 }
