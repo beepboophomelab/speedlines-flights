@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>Share location</title>
+<style>body{font-family:system-ui,sans-serif;max-width:28rem;margin:3rem auto;padding:0 1.2rem;line-height:1.5}
+button{font-size:1.1rem;padding:.8rem 1.2rem;border-radius:.6rem;border:1px solid #888;background:#fff}#msg{margin-top:1rem}</style></head>
+<body><h1>Share your location</h1>
+<p>Your display will use it to show the planes overhead. It's rounded to about 100 metres and sent only to your display.</p>
+<button id="go">Use my location</button><p id="msg"></p>
+<script>
+const q = new URLSearchParams(location.search), msg = document.getElementById('msg');
+function home(u) {
+  try { const x = new URL(u); if (!/^https?:$/.test(x.protocol)) return null;
+    const h = x.hostname;
+    if (h.endsWith('.local') || /^(10\.\d+|192\.168|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+$/.test(h)) return x;
+  } catch (e) {} return null; }
+const back = home(q.get('return') || ''), state = (q.get('state') || '').replace(/[^A-Za-z0-9_-]/g, '');
+if (!back || !state) { msg.textContent = 'This page only works from your display\u2019s setup page.'; document.getElementById('go').disabled = true; }
+document.getElementById('go').onclick = () => {
+  msg.textContent = 'Asking your phone\u2026';
+  navigator.geolocation.getCurrentPosition(p => {
+    back.pathname = '/location';
+    back.search = new URLSearchParams({ lat: p.coords.latitude.toFixed(3), lon: p.coords.longitude.toFixed(3), state }).toString();
+    location.replace(back.toString());
+  }, e => { msg.textContent = 'Couldn\u2019t get your location (' + e.message + '). Go back and use the postcode or the map instead.'; },
+  { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
+};
+</script></body></html>
