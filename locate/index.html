@@ -14,6 +14,7 @@ function home(u) {
     if (h.endsWith('.local') || /^(10\.\d+|192\.168|172\.(1[6-9]|2\d|3[01]))\.\d+\.\d+$/.test(h)) return x;
   } catch (e) {} return null; }
 const back = home(q.get('return') || ''), state = (q.get('state') || '').replace(/[^A-Za-z0-9_-]/g, '');
+if (back && state) msg.textContent = 'This will send your location to ' + back.host + '.';
 if (!back || !state) { msg.textContent = 'This page only works from your display\u2019s setup page.'; document.getElementById('go').disabled = true; }
 document.getElementById('go').onclick = () => {
   msg.textContent = 'Asking your phone\u2026';
