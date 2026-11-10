@@ -61,11 +61,11 @@
  "list": {
   "url": "https://flights.speedlines.uk/list.json",
   "sig": "https://flights.speedlines.uk/list.json.sig",
-  "version": "2026.11.09.2342",
-  "sha256": "a6224284e7c756ed95e57e53fc720ddb8f6f008592a0684e71a101306738905e",
-  "bytes": 50859
+  "version": "2026.11.10.1053",
+  "sha256": "29111404eabd6f302eca0194f96186ab84a998b5e49a05ed1fa4eaf2f6da8111",
+  "bytes": 51196
  },
  "key_url": "https://flights.speedlines.uk/keys/",
- "version": "2026.11.09.2342-8aa75e8c",
- "published": "2026-11-09T23:42:38Z"
+ "version": "2026.11.10.1053-d18556bc",
+ "published": "2026-11-10T10:53:39Z"
 }
