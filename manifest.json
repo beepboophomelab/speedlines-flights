@@ -75,6 +75,11 @@
   }
  },
  "key_url": "https://flights.speedlines.uk/keys/",
- "version": "2026.11.11.2131-152fe443",
- "published": "2026-11-11T21:31:56Z"
+ "locate_url": "https://flights.speedlines.uk/locate/",
+ "fonts": {
+  "css": "https://flights.speedlines.uk/fonts/fonts.css",
+  "sri": "sha384-7HTA9qjgC6G52kNCXBGZkJzNOqYPI9uG1FmjqQY1DY7VbQc54xNlaI4l1gi2aMnx"
+ },
+ "version": "2026.11.11.2131-9a56f56b",
+ "published": "2026-11-11T21:35:20Z"
 }
