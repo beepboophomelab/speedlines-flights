@@ -61,17 +61,17 @@
  "list": {
   "url": "https://flights.speedlines.uk/list.json",
   "sig": "https://flights.speedlines.uk/list.json.sig",
-  "version": "2026.11.12.2115",
-  "sha256": "25977166a45ea7bac5eeca7d86ec7cefc864ae2d53b763059d647f2498409e25",
-  "bytes": 71610
+  "version": "2026.11.13.1827",
+  "sha256": "f67b86e5c56221764fc35b32285ee490aafebb55113fc0acc118e5138f11f07b",
+  "bytes": 72331
  },
  "lists": {
   "1": {
    "url": "https://flights.speedlines.uk/list.json",
    "sig": "https://flights.speedlines.uk/list.json.sig",
-   "version": "2026.11.12.2115",
-   "sha256": "25977166a45ea7bac5eeca7d86ec7cefc864ae2d53b763059d647f2498409e25",
-   "bytes": 71610
+   "version": "2026.11.13.1827",
+   "sha256": "f67b86e5c56221764fc35b32285ee490aafebb55113fc0acc118e5138f11f07b",
+   "bytes": 72331
   }
  },
  "key_url": "https://flights.speedlines.uk/keys/",
@@ -80,6 +80,6 @@
   "css": "https://flights.speedlines.uk/fonts/fonts.css",
   "sri": "sha384-7HTA9qjgC6G52kNCXBGZkJzNOqYPI9uG1FmjqQY1DY7VbQc54xNlaI4l1gi2aMnx"
  },
- "version": "2026.11.12.2115-fbce76ab",
- "published": "2026-11-12T21:15:31Z"
+ "version": "2026.11.13.1827-efc15478",
+ "published": "2026-11-13T18:27:18Z"
 }
