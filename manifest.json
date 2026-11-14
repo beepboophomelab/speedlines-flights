@@ -32,9 +32,18 @@
    "adsblol"
   ]
  },
- "routes": {
-  "template": "https://api.adsbdb.com/v0/callsign/{callsign}"
- },
+ "routes": [
+  {
+   "name": "speedlines",
+   "format": "speedlines",
+   "template": "https://flights-api.speedlines.uk/v1/route/{callsign}"
+  },
+  {
+   "name": "adsbdb",
+   "format": "adsbdb",
+   "template": "https://api.adsbdb.com/v0/callsign/{callsign}"
+  }
+ ],
  "report": {
   "url": "https://flights-api.speedlines.uk/v1/report",
   "enabled": false
@@ -61,17 +70,17 @@
  "list": {
   "url": "https://flights.speedlines.uk/list.json",
   "sig": "https://flights.speedlines.uk/list.json.sig",
-  "version": "2026.11.13.2042",
-  "sha256": "786f0d1f922fb04c817dc99e58df98c02ce408ace3ad64a9a33de3c72e49212d",
-  "bytes": 73199
+  "version": "2026.11.14.2027",
+  "sha256": "d2ad3c304424a814f440cbb86108f84a389289b60b6699b16d80cbf167846fa2",
+  "bytes": 76553
  },
  "lists": {
   "1": {
    "url": "https://flights.speedlines.uk/list.json",
    "sig": "https://flights.speedlines.uk/list.json.sig",
-   "version": "2026.11.13.2042",
-   "sha256": "786f0d1f922fb04c817dc99e58df98c02ce408ace3ad64a9a33de3c72e49212d",
-   "bytes": 73199
+   "version": "2026.11.14.2027",
+   "sha256": "d2ad3c304424a814f440cbb86108f84a389289b60b6699b16d80cbf167846fa2",
+   "bytes": 76553
   }
  },
  "key_url": "https://flights.speedlines.uk/keys/",
@@ -80,6 +89,6 @@
   "css": "https://flights.speedlines.uk/fonts/fonts.css",
   "sri": "sha384-7HTA9qjgC6G52kNCXBGZkJzNOqYPI9uG1FmjqQY1DY7VbQc54xNlaI4l1gi2aMnx"
  },
- "version": "2026.11.13.2042-83e72922",
- "published": "2026-11-13T20:42:41Z"
+ "version": "2026.11.14.2027-4e3fee84",
+ "published": "2026-11-14T20:27:44Z"
 }
