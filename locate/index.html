@@ -1,11 +1,56 @@
 <!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow"><title>Share location</title>
-<style>body{font-family:system-ui,sans-serif;max-width:28rem;margin:3rem auto;padding:0 1.2rem;line-height:1.5}
-button{font-size:1.1rem;padding:.8rem 1.2rem;border-radius:.6rem;border:1px solid #888;background:#fff}#msg{margin-top:1rem}</style></head>
-<body><h1>Share your location</h1>
+<meta name="robots" content="noindex, nofollow"><meta name="color-scheme" content="light dark"><title>Share location</title>
+<!-- Draft (14 Nov 2026) of https://flights.speedlines.uk/locate/ in the device pages' Seaside style
+     (docs/style/reference.html): the same colours, the three Streamline lines, Josefin Sans and DM Sans from the
+     site's own /fonts/ (no Google). The script is the live page's, unchanged except the two lines marked CHANGED. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #F4F1EA; --text: #1C1C1C; --text-2: #3B3E40; --muted: #5A6064; --border: #CBD1D4; --card: #FFFFFF;
+  --curve: #7FA88A; --accent-text: #3E5A44; --button: #1C1C1C; --button-text: #F4F1EA;
+  --head: "Josefin Sans", "Futura", "Century Gothic", "Avenir Next", system-ui, sans-serif;
+  --body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --cut: 4px 22px 4px 4px;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #1A1D1F; --text: #EEF0EC; --text-2: #C9CEC9; --muted: #A3ACA8; --border: #353B3E; --card: #22272A;
+          --curve: #9FC3A8; --accent-text: #C9D8B6; --button: #EEF0EC; --button-text: #1A1D1F; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 17px/1.55 var(--body);
+       padding: env(safe-area-inset-top, 0) 0 env(safe-area-inset-bottom, 0); }
+main { max-width: 32rem; margin: 0 auto; padding: 0 1.5rem 2rem; }
+.top { padding: 1.25rem 0; font: 700 1.25rem/1 var(--head); letter-spacing: .06em; }
+.curves { border-top: 4px solid var(--curve); border-right: 4px solid var(--curve); border-top-right-radius: 64px;
+          padding: 8px 8px 0 0; height: 104px; }
+.curves > div { border-top: 4px solid var(--curve); border-right: 4px solid var(--curve); border-top-right-radius: 54px;
+                padding: 8px 8px 0 0; height: 100%; }
+.curves > div > div { border-top: 4px solid var(--curve); border-right: 4px solid var(--curve); border-top-right-radius: 44px; height: 100%; }
+.framed { margin-top: -60px; padding-right: 62px; }
+.label { margin: 0; font: 600 .8rem/1.3 var(--head); letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: .5rem 0 0; font: 700 2.25rem/1.06 var(--head); }
+p { margin: 1rem 0; color: var(--text-2); }
+#go { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.4rem;
+      border: 0; border-radius: 24px; background: var(--button); color: var(--button-text); font: 500 1rem var(--body);
+      cursor: pointer; margin-top: .25rem; }
+#go:disabled { opacity: .45; cursor: default; }
+#go:focus-visible { outline: 2px solid var(--curve); outline-offset: 2px; }
+#msg { margin-top: 1rem; padding: .7rem .9rem; border-radius: var(--cut); background: var(--card);
+       border: 1px solid var(--border); color: var(--text); }
+#msg:empty { display: none; }
+footer { margin-top: 2.5rem; color: var(--muted); font-size: .9rem; }
+</style></head>
+<body><main>
+<div class="top">speedlines</div>
+<div class="curves" aria-hidden="true"><div><div></div></div></div>
+<div class="framed"><p class="label">Your display</p><h1>Share your location</h1></div>
 <p>Your display will use it to show the planes overhead. It's rounded to about 100 metres and sent only to your display.</p>
-<button id="go">Use my location</button><p id="msg"></p>
+<button id="go">Use my location</button><p id="msg" role="status" aria-live="polite"></p>
+<footer>Made in Sheffield</footer>
+</main>
 <script>
 const q = new URLSearchParams(location.search), msg = document.getElementById('msg');
 function home(u) {
@@ -17,7 +62,7 @@ const back = home(q.get('return') || ''), state = (q.get('state') || '').replace
 if (back && state) msg.textContent = 'This will send your location to ' + back.host + '.';
 if (!back || !state) { msg.textContent = 'This page only works from your display\u2019s setup page.'; document.getElementById('go').disabled = true; }
 document.getElementById('go').onclick = () => {
-  msg.textContent = 'Asking your phone\u2026';
+  msg.textContent = 'Finding your location\u2026';   // CHANGED: was 'Asking your phone\u2026'
   navigator.geolocation.getCurrentPosition(p => {
     back.pathname = '/location';
     back.search = new URLSearchParams({ lat: p.coords.latitude.toFixed(3), lon: p.coords.longitude.toFixed(3), state }).toString();
@@ -25,4 +70,5 @@ document.getElementById('go').onclick = () => {
   }, e => { msg.textContent = 'Couldn\u2019t get your location (' + e.message + '). Go back and use the postcode or the map instead.'; },
   { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
 };
+if (back && state) document.getElementById('go').click();   // CHANGED (added): ask as soon as the page opens
 </script></body></html>
