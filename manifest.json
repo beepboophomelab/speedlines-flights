@@ -5,6 +5,7 @@
    "name": "flyitaly",
    "format": "adsbx_v2",
    "needs_key": true,
+   "key_header": "X-Api-Key",
    "template": "https://api.flyitalyadsb.com/api/aircraft/v2/lat/{lat}/lon/{lon}/dist/{nm}/"
   },
   {
@@ -18,12 +19,24 @@
    "format": "readsb",
    "needs_key": false,
    "template": "https://api.adsb.lol/v2/lat/{lat}/lon/{lon}/dist/{nm}"
+  },
+  {
+   "name": "server",
+   "format": "tiles_v1",
+   "needs_key": false,
+   "enabled": false,
+   "for": [
+    "own"
+   ],
+   "template": "https://displays.speedlines.uk/v1/b/{z}/{x}/{y}.json",
+   "z": 10,
+   "max_age_s": 60
   }
  ],
  "source_order": {
   "gift": [
-   "flyitaly",
    "adsbfi",
+   "flyitaly",
    "adsblol"
   ],
   "own": [
@@ -31,6 +44,14 @@
    "flyitaly",
    "adsblol"
   ]
+ },
+ "tls": {
+  "session_max_h": {
+   "default_h": 1,
+   "flights-api.speedlines.uk": 25,
+   "displays.speedlines.uk": 25,
+   "opendata.adsb.fi": 16
+  }
  },
  "routes": [
   {
@@ -47,6 +68,12 @@
  "report": {
   "url": "https://flights-api.speedlines.uk/v1/report",
   "enabled": false
+ },
+ "display_reports": {
+  "enabled": false,
+  "url": "https://flights-api.speedlines.uk/v2/reports",
+  "register_url": "https://flights-api.speedlines.uk/v2/register",
+  "every_s": 600
  },
  "firmware": {},
  "intervals": {
@@ -70,17 +97,17 @@
  "list": {
   "url": "https://flights.speedlines.uk/list.json",
   "sig": "https://flights.speedlines.uk/list.json.sig",
-  "version": "2026.11.22.0500",
-  "sha256": "30e29be4d2ba49b143797b6ed4c6396a932f223fd73eb05584bdd9b0a73de4d2",
-  "bytes": 79367
+  "version": "2026.11.25.0500",
+  "sha256": "6da9cef5c235c5ecf45ce446915a9d53a6efcf1d161afb4b5862a6eea1ea056e",
+  "bytes": 79945
  },
  "lists": {
   "1": {
    "url": "https://flights.speedlines.uk/list.json",
    "sig": "https://flights.speedlines.uk/list.json.sig",
-   "version": "2026.11.22.0500",
-   "sha256": "30e29be4d2ba49b143797b6ed4c6396a932f223fd73eb05584bdd9b0a73de4d2",
-   "bytes": 79367
+   "version": "2026.11.25.0500",
+   "sha256": "6da9cef5c235c5ecf45ce446915a9d53a6efcf1d161afb4b5862a6eea1ea056e",
+   "bytes": 79945
   }
  },
  "key_url": "https://flights.speedlines.uk/keys/",
@@ -89,6 +116,6 @@
   "css": "https://flights.speedlines.uk/fonts/fonts.css",
   "sri": "sha384-7HTA9qjgC6G52kNCXBGZkJzNOqYPI9uG1FmjqQY1DY7VbQc54xNlaI4l1gi2aMnx"
  },
- "version": "2026.11.22.0500-48b6c3b7",
- "published": "2026-11-22T05:30:01Z"
+ "version": "2026.11.25.0500-3844cce1",
+ "published": "2026-11-25T11:13:44Z"
 }
